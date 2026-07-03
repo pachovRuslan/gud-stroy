@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Фундамент">
+  <rect width="800" height="600" fill="#F3F4F6"/>
+  <rect x="0" y="0" width="800" height="600" fill="#E5E7EB"/>
+  <!-- sky portion -->
+  <rect x="0" y="0" width="800" height="180" fill="#DBEAFE"/>
+  <!-- ground -->
+  <rect x="0" y="180" width="800" height="420" fill="#D6D3D1"/>
+  <line x1="0" y1="180" x2="800" y2="180" stroke="#1F2937" stroke-width="3"/>
+  <!-- trench / excavation -->
+  <polygon points="120,180 680,180 640,470 160,470" fill="#A8A29E"/>
+  <!-- foundation strip (ленточный фундамент) -->
+  <rect x="160" y="470" width="480" height="70" fill="#9CA3AF" stroke="#1F2937" stroke-width="4"/>
+  <!-- foundation walls outline -->
+  <polygon points="120,180 680,180 640,470 160,470" fill="none" stroke="#1F2937" stroke-width="4"/>
+  <!-- rebar (арматура) sticking up -->
+  <g stroke="#F59E0B" stroke-width="6" stroke-linecap="round">
+    <line x1="220" y1="470" x2="220" y2="380"/>
+    <line x1="300" y1="470" x2="300" y2="360"/>
+    <line x1="400" y1="470" x2="400" y2="350"/>
+    <line x1="500" y1="470" x2="500" y2="360"/>
+    <line x1="580" y1="470" x2="580" y2="380"/>
+  </g>
+  <!-- concrete texture lines -->
+  <g stroke="#6B7280" stroke-width="2" opacity="0.4">
+    <line x1="170" y1="500" x2="260" y2="500"/>
+    <line x1="330" y1="510" x2="430" y2="510"/>
+    <line x1="480" y1="500" x2="600" y2="500"/>
+  </g>
+  <!-- measuring tape hint -->
+  <rect x="690" y="200" width="60" height="30" fill="#F59E0B" stroke="#1F2937" stroke-width="3" rx="3"/>
+  <text x="720" y="220" font-family="sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">L</text>
+</svg>

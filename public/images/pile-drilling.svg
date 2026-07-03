@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Бурение свай">
+  <rect width="800" height="600" fill="#F3F4F6"/>
+  <rect x="0" y="0" width="800" height="420" fill="#DBEAFE"/>
+  <rect x="0" y="420" width="800" height="180" fill="#D6D3D1"/>
+  <line x1="0" y1="420" x2="800" y2="420" stroke="#1F2937" stroke-width="3"/>
+  <!-- mini-excavator body -->
+  <g stroke="#1F2937" stroke-width="4" stroke-linejoin="round">
+    <!-- tracks -->
+    <rect x="120" y="380" width="180" height="45" rx="20" fill="#374151"/>
+    <circle cx="150" cy="402" r="14" fill="#1F2937"/>
+    <circle cx="270" cy="402" r="14" fill="#1F2937"/>
+    <!-- cab -->
+    <rect x="150" y="310" width="120" height="70" fill="#F59E0B"/>
+    <!-- arm (стрела) -->
+    <line x1="265" y1="330" x2="430" y2="260" stroke-width="14" stroke="#D97706"/>
+    <line x1="430" y1="260" x2="520" y2="430" stroke-width="12" stroke="#F59E0B"/>
+  </g>
+  <!-- auger (шнек) drilling into ground -->
+  <g stroke="#1F2937" stroke-width="3" fill="none">
+    <line x1="520" y1="430" x2="520" y2="560"/>
+  </g>
+  <g stroke="#F59E0B" stroke-width="4">
+    <line x1="505" y1="450" x2="535" y2="445"/>
+    <line x1="505" y1="475" x2="535" y2="470"/>
+    <line x1="505" y1="500" x2="535" y2="495"/>
+    <line x1="505" y1="525" x2="535" y2="520"/>
+    <line x1="505" y1="550" x2="535" y2="545"/>
+  </g>
+  <!-- drilling hole -->
+  <ellipse cx="520" cy="425" rx="22" ry="8" fill="#1F2937"/>
+  <!-- dirt mounds -->
+  <path d="M 460 425 Q 520 395 580 425 Z" fill="#A8A29E" stroke="#1F2937" stroke-width="2"/>
+</svg>
