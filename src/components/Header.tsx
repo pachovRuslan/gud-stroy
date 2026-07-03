@@ -3,8 +3,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import Container from './Container';
+import { COMPANY } from '@/constants/company';
 
 const NAV_ITEMS = [
   { href: '/o-nas', label: 'О нас' },
@@ -20,13 +22,22 @@ const Header = () => {
 
   return (
     <header className="bg-white shadow-sm border-b sticky top-0 z-50">
-      <Container className="flex items-center justify-between py-4 md:py-6">
+      <Container className="flex items-center justify-between py-3 md:py-4 gap-4">
         <Link
           href="/"
-          className="text-xl md:text-2xl font-bold text-secondary tracking-tight"
+          className="flex items-center gap-3 flex-shrink-0"
           onClick={() => setMenuOpen(false)}
         >
-          ГУД-СТРОЙ
+          <Image
+            src="/images/logo.png"
+            alt={COMPANY.name}
+            width={48}
+            height={48}
+            className="rounded-md"
+          />
+          <span className="text-lg md:text-xl font-bold text-secondary tracking-tight hidden sm:inline">
+            {COMPANY.name}
+          </span>
         </Link>
 
         {/* Десктоп-меню */}
@@ -35,7 +46,7 @@ const Header = () => {
             <Link
               key={item.href}
               href={item.href}
-              className={`transition-colors ${
+              className={`transition-colors whitespace-nowrap ${
                 isActive(item.href) ? 'text-primary' : 'text-secondary hover:text-primary'
               }`}
             >
@@ -44,13 +55,20 @@ const Header = () => {
           ))}
         </nav>
 
-        <button className="hidden md:block px-6 py-2 bg-primary text-white font-semibold rounded hover:bg-primary-dark transition-all">
-          Заказать расчет
-        </button>
+        <div className="hidden md:flex items-center gap-5">
+          
+            <a href={`tel:${COMPANY.phone.replace(/\s|\(|\)|-/g, '')}`}
+            className="text-sm font-medium text-secondary hover:text-primary transition-colors whitespace-nowrap">
+            {COMPANY.phone}
+          </a>
+          <button className="px-6 py-2 bg-primary text-white font-semibold rounded hover:bg-primary-dark transition-all whitespace-nowrap">
+            Заказать расчет
+          </button>
+        </div>
 
         {/* Кнопка гамбургера — только на мобильных */}
         <button
-          className="md:hidden p-2"
+          className="md:hidden p-2 flex-shrink-0"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
         >
@@ -76,6 +94,12 @@ const Header = () => {
                 {item.label}
               </Link>
             ))}
+            
+             <a href={`tel:${COMPANY.phone.replace(/\s|\(|\)|-/g, '')}`}
+              className="py-3 font-medium text-secondary"
+            >
+              {COMPANY.phone}
+            </a>
             <button className="mt-2 px-6 py-3 bg-primary text-white font-semibold rounded">
               Заказать расчет
             </button>
