@@ -11,7 +11,10 @@ import { COMPANY } from '@/constants/company';
 const NAV_ITEMS = [
   { href: '/o-nas', label: 'О нас' },
   { href: '/uslugi', label: 'Услуги' },
+  { href: '/tovary', label: 'Товары' },
   { href: '/kontakty', label: 'Контакты' },
+  
+  
 ];
 
 const Header = () => {
