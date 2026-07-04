@@ -1,0 +1,63 @@
+{
+  "format": "custom",
+  "id": "company",
+  "label": "Компания (контакты)",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "name": {
+        "type": "Text",
+        "config": { "label": "Название компании", "placeholder": "ГУД-СТРОЙ", "useAsTitle": true }
+      },
+      "tagline": {
+        "type": "Text",
+        "config": { "label": "Слоган", "placeholder": "Строительство домов и фундаментные работы..." }
+      },
+      "phone": {
+        "type": "Text",
+        "config": { "label": "Телефон", "placeholder": "+375 (29) XXX-XX-XX" }
+      },
+      "email": {
+        "type": "Text",
+        "config": { "label": "Email", "placeholder": "info@gud-stroy.by" }
+      },
+      "region": {
+        "type": "Text",
+        "config": { "label": "Регион работы", "placeholder": "Витебск, Витебская область" }
+      },
+      "address": {
+        "type": "Text",
+        "config": { "label": "Адрес офиса", "placeholder": "г. Витебск, ул. ..." }
+      },
+      "experience": {
+        "type": "Text",
+        "config": { "label": "Опыт работы", "placeholder": "8–10 лет" }
+      },
+      "workHours": {
+        "type": "Text",
+        "config": { "label": "Режим работы", "placeholder": "Пн–Пт: 9:00–18:00" }
+      },
+      "mapLat": {
+        "type": "Number",
+        "config": { "label": "Координата широты (lat)", "placeholder": "55.1904" }
+      },
+      "mapLng": {
+        "type": "Number",
+        "config": { "label": "Координата долготы (lng)", "placeholder": "30.2049" }
+      },
+      "paymentOptions": {
+        "type": "Group",
+        "config": {
+          "label": "Условия оплаты",
+          "fields": {
+            "option": {
+              "type": "Text",
+              "config": { "label": "Вариант расчёта" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -30,6 +30,9 @@ importers:
         specifier: 19.2.4
         version: 19.2.4(react@19.2.4)
     devDependencies:
+      '@slicemachine/adapter-next':
+        specifier: ^0.3.96
+        version: 0.3.96(next@16.2.10(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
       '@tailwindcss/postcss':
         specifier: ^4
         version: 4.3.2
@@ -598,6 +601,10 @@ packages:
       '@prismicio/client': ^7
       react: ^18 || ^19
 
+  '@prismicio/simulator@0.1.4':
+    resolution: {integrity: sha512-aBDwGghM8LqXOvdbJWJScBTpY8wuVl3CyCWFqiFwqC8l5SPrQtD2CwEVX0UCB0azPlisb7l7al5Wcg2nxQ6xrQ==}
+    engines: {node: '>=14.15.0'}
+
   '@prismicio/simulator@0.2.4':
     resolution: {integrity: sha512-dmxqaihyUkuUbbJwe/AJuE40c6jH233plJiGza8sTGmzNKd/V8tsP11+NuBN0vuFSpZ1zBEWYsZFbsCwHuJZyA==}
     engines: {node: '>=20'}
@@ -636,6 +643,13 @@ packages:
 
   '@sideway/pinpoint@2.0.0':
     resolution: {integrity: sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==}
+
+  '@slicemachine/adapter-next@0.3.96':
+    resolution: {integrity: sha512-OcGO2fwWu/yYiqowSQLFElAT5TnK3yQhoC2Ng4GVbhVxFsLiJlcdvCi29EEpVAn1LNTkGWVzddi6LgJF7e5mEw==}
+    engines: {node: '>=14.15.0'}
+    peerDependencies:
+      next: ^11 || ^12 || ^13 || ^14 || ^15 || ^16.0.0-beta.0
+      react: ^17 || ^18 || ^19.0.0-rc.0
 
   '@slicemachine/manager@0.27.3':
     resolution: {integrity: sha512-yMJES7EFy6UxHGgqfFtTHrYqsalSpfouaTdesHms9Z9vSNIehm4KWNhzLa4m+xqMBAH+gbyRrUEvntFmSb5Pvg==}
@@ -779,6 +793,9 @@ packages:
 
   '@types/react@19.2.17':
     resolution: {integrity: sha512-MXfmqaVPEVgkBT/aY0aGCkRWWtByiYQXo3xdQ8r5RzuFrPiRn8Gar2tQdXSUQ2GKV3bkXckek89V8wQBY2Q/Aw==}
+
+  '@types/statuses@2.0.6':
+    resolution: {integrity: sha512-xMAgYwceFhRA2zY+XbEA7mxYbA093wdiW8Vu6gZPGWy9cmOyU9XesH1tNcEWsKFd5Vzrqx5T3D38PWx1FIIXkA==}
 
   '@typescript-eslint/eslint-plugin@8.62.1':
     resolution: {integrity: sha512-4EQM77WgVNxj7OkL/5b/D/xZsw00G577+UriYTC7JF5opcF3T2AuoeY7ueLaZgSVjSgCS6yOAJB5bRGLPSJUzA==}
@@ -3436,6 +3453,12 @@ snapshots:
       esm-env: 1.2.2
       react: 19.2.4
 
+  '@prismicio/simulator@0.1.4':
+    dependencies:
+      '@prismicio/client': 7.21.8
+      '@types/statuses': 2.0.6
+      statuses: 2.0.2
+
   '@prismicio/simulator@0.2.4(@prismicio/client@7.21.8)':
     dependencies:
       '@prismicio/client': 7.21.8
@@ -3484,6 +3507,24 @@ snapshots:
   '@sideway/formula@3.0.1': {}
 
   '@sideway/pinpoint@2.0.0': {}
+
+  '@slicemachine/adapter-next@0.3.96(next@16.2.10(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)':
+    dependencies:
+      '@prismicio/simulator': 0.1.4
+      '@prismicio/types-internal': 3.11.2(fp-ts@2.16.11)(io-ts-types@0.5.19(fp-ts@2.16.11)(io-ts@2.2.22(fp-ts@2.16.11))(monocle-ts@2.3.13(fp-ts@2.16.11))(newtype-ts@0.3.5(fp-ts@2.16.11)(monocle-ts@2.3.13(fp-ts@2.16.11))))(io-ts@2.2.22(fp-ts@2.16.11))
+      '@slicemachine/plugin-kit': 0.4.95
+      common-tags: 1.8.2
+      fp-ts: 2.16.11
+      io-ts: 2.2.22(fp-ts@2.16.11)
+      io-ts-types: 0.5.19(fp-ts@2.16.11)(io-ts@2.2.22(fp-ts@2.16.11))(monocle-ts@2.3.13(fp-ts@2.16.11))(newtype-ts@0.3.5(fp-ts@2.16.11)(monocle-ts@2.3.13(fp-ts@2.16.11)))
+      lz-string: 1.5.0
+      monocle-ts: 2.3.13(fp-ts@2.16.11)
+      newtype-ts: 0.3.5(fp-ts@2.16.11)(monocle-ts@2.3.13(fp-ts@2.16.11))
+      next: 16.2.10(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      pascal-case: 3.1.2
+      react: 19.2.4
+    transitivePeerDependencies:
+      - '@prismicio/types'
 
   '@slicemachine/manager@0.27.3(zod@4.4.3)':
     dependencies:
@@ -3640,6 +3681,8 @@ snapshots:
   '@types/react@19.2.17':
     dependencies:
       csstype: 3.2.3
+
+  '@types/statuses@2.0.6': {}
 
   '@typescript-eslint/eslint-plugin@8.62.1(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@2.7.0))(typescript@5.9.3))(eslint@9.39.4(jiti@2.7.0))(typescript@5.9.3)':
     dependencies:

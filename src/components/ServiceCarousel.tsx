@@ -29,7 +29,12 @@ const ServiceCarousel = () => {
   }, [goNext]);
 
   return (
-    <div className="relative bg-secondary overflow-hidden h-[340px] md:h-[400px]">
+    <div
+      className="relative overflow-hidden h-[340px] md:h-[400px] bg-cover bg-center"
+      style={{ backgroundImage: "url('/images/1.jpg')" }}
+    >
+      <div className="absolute inset-0 bg-secondary/85" />
+
       {SERVICES.map((service, i) => (
         <div
           key={service.id}
@@ -37,7 +42,7 @@ const ServiceCarousel = () => {
             activeSlide === i ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
-          <Container className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <Container className="relative w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
               <p className="text-primary text-sm font-medium tracking-wide mb-2">
                 Услуга {i + 1} из {totalSlides}
@@ -55,7 +60,7 @@ const ServiceCarousel = () => {
                 Подробнее
               </Link>
             </div>
-            <div className="relative w-full h-48 md:h-64 rounded-lg overflow-hidden">
+            <div className="relative w-full h-48 md:h-64 rounded-lg overflow-hidden shadow-lg">
               <Image src={service.image} alt={service.title} fill className="object-cover" />
             </div>
           </Container>

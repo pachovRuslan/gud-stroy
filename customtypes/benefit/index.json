@@ -1,0 +1,41 @@
+{
+  "format": "custom",
+  "id": "benefit",
+  "label": "Преимущество",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Заголовок",
+          "placeholder": "Бесплатный выезд сметчика",
+          "useAsTitle": true
+        }
+      },
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "Описание",
+          "placeholder": "Наш специалист приедет на замер и составит смету без оплаты."
+        }
+      },
+      "icon": {
+        "type": "Select",
+        "config": {
+          "label": "Иконка",
+          "placeholder": "Выберите иконку",
+          "options": [
+            "ruler",
+            "handshake",
+            "credit-card",
+            "file-check",
+            "truck",
+            "award"
+          ]
+        }
+      }
+    }
+  }
+}

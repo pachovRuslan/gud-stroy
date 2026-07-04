@@ -1,0 +1,26 @@
+{
+  "format": "custom",
+  "id": "stat",
+  "label": "Цифра (статистика)",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "value": {
+        "type": "Text",
+        "config": {
+          "label": "Значение",
+          "placeholder": "8–10 / 47+ / 5.0",
+          "useAsTitle": true
+        }
+      },
+      "label": {
+        "type": "Text",
+        "config": {
+          "label": "Подпись",
+          "placeholder": "лет опыта / выполненных проектов"
+        }
+      }
+    }
+  }
+}

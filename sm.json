@@ -2,6 +2,5 @@
   "repositoryName": "gud-stroy",
   "adapter": "@slicemachine/adapter-next",
   "libraries": ["./src/slices"],
-  "localSliceSimulatorURL": "http://localhost:3001/slice-simulator",
   "apiEndpoint": "https://gud-stroy.cdn.prismic.io/api/v2"
 }
