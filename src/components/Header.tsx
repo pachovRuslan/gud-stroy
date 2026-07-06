@@ -8,6 +8,18 @@ import { usePathname } from 'next/navigation';
 import Container from './Container';
 import { COMPANY } from '@/constants/company';
 
+// CTA-кнопка ведёт на форму заявки: на главной — к якорю #zayavka,
+// на остальных страницах — на главную с тем же якорем.
+function CtaButton({ className = '', children }: { className?: string; children: React.ReactNode }) {
+  const pathname = usePathname();
+  const href = pathname === '/' ? '/#zayavka' : '/#zayavka';
+  return (
+    <Link href={href} className={className}>
+      {children}
+    </Link>
+  );
+}
+
 const NAV_ITEMS = [
   { href: '/o-nas', label: 'О нас' },
   { href: '/uslugi', label: 'Услуги' },
@@ -64,9 +76,9 @@ const Header = () => {
             className="text-sm font-medium text-secondary hover:text-primary transition-colors whitespace-nowrap">
             {COMPANY.phone}
           </a>
-          <button className="px-6 py-2 bg-primary text-white font-semibold rounded hover:bg-primary-dark transition-all whitespace-nowrap">
+          <CtaButton className="px-6 py-2 bg-primary text-white font-semibold rounded hover:bg-primary-dark transition-all whitespace-nowrap">
             Заказать расчет
-          </button>
+          </CtaButton>
         </div>
 
         {/* Кнопка гамбургера — только на мобильных */}
@@ -103,9 +115,9 @@ const Header = () => {
             >
               {COMPANY.phone}
             </a>
-            <button className="mt-2 px-6 py-3 bg-primary text-white font-semibold rounded">
+            <CtaButton className="mt-2 px-6 py-3 bg-primary text-white font-semibold rounded text-center">
               Заказать расчет
-            </button>
+            </CtaButton>
           </Container>
         </div>
       )}

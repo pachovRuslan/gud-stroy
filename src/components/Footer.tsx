@@ -28,9 +28,9 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-3 text-sm">Услуги</h3>
             <ul className="flex flex-col gap-2 text-sm">
-              <li><Link href="/uslugi/frame-houses" className="hover:text-white transition-colors">Каркасные дома</Link></li>
-              <li><Link href="/uslugi/foundation" className="hover:text-white transition-colors">Фундаментные работы</Link></li>
-              <li><Link href="/uslugi/excavator-rental" className="hover:text-white transition-colors">Аренда техники</Link></li>
+              <li><Link href="/uslugi/stroitelstvo-karkasnykh-domov" className="hover:text-white transition-colors">Каркасные дома</Link></li>
+              <li><Link href="/uslugi/stroitelstvo-domov-iz-blokov" className="hover:text-white transition-colors">Дома из блоков</Link></li>
+              <li><Link href="/uslugi/fundamentnye-raboty" className="hover:text-white transition-colors">Фундаментные работы</Link></li>
             </ul>
           </div>
         </div>

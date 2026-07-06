@@ -1,6 +1,0 @@
-{
-  "repositoryName": "gud-stroy",
-  "adapter": "@slicemachine/adapter-next",
-  "libraries": ["./src/slices"],
-  "apiEndpoint": "https://gud-stroy.cdn.prismic.io/api/v2"
-}

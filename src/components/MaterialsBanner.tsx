@@ -1,5 +1,7 @@
 
 // src/components/MaterialsBanner.tsx
+import Link from 'next/link';
+
 const MaterialsBanner = () => {
   return (
     <div className="bg-secondary rounded-lg px-8 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -11,9 +13,12 @@ const MaterialsBanner = () => {
           Сенеж, Металл Профиль, ГрандЛайн, Ондулин — честные цены без наценки посредников.
         </p>
       </div>
-      <button className="px-6 py-3 bg-primary text-white font-semibold rounded hover:bg-primary-dark transition-all whitespace-nowrap">
+      <Link
+        href="/tovary"
+        className="px-6 py-3 bg-primary text-white font-semibold rounded hover:bg-primary-dark transition-all whitespace-nowrap"
+      >
         Узнать подробнее
-      </button>
+      </Link>
     </div>
   );
 };
