@@ -3,7 +3,7 @@ import Container from '@/components/Container';
 import UslugiHero from '@/components/UslugiHero';
 import ServiceRow from '@/components/ServiceRow';
 import { getServices } from '@/sanity/data';
-
+export const dynamic = 'force-dynamic';
 export default async function ServicesPage() {
   const services = await getServices();
 
