@@ -1,41 +1,25 @@
-
-import React from 'react';
-import {
-  Ruler,
-  Handshake,
-  CreditCard,
-  FileCheck2,
-  Truck,
-  Award,
-  type LucideIcon,
-} from 'lucide-react';
+// src/components/BenefitCard.tsx
+import type { LucideIcon } from 'lucide-react';
 import type { Benefit } from '@/constants/benefits';
 
 type Props = {
   benefit: Benefit;
+  Icon: LucideIcon;
+  shaded?: boolean;
 };
 
-const ICONS: Record<string, LucideIcon> = {
-  ruler: Ruler,
-  handshake: Handshake,
-  'credit-card': CreditCard,
-  'file-check': FileCheck2,
-  truck: Truck,
-  award: Award,
-};
-
-const BenefitCard = ({ benefit }: Props) => {
-  const Icon = ICONS[benefit.icon] ?? Award;
-
+const BenefitCard = ({ benefit, Icon, shaded = false }: Props) => {
   return (
-    <div className="flex gap-3">
-      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary">
-        <Icon size={20} strokeWidth={2} />
+    <div
+      className={`rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow ${
+        shaded ? 'bg-gray-100' : 'bg-white'
+      }`}
+    >
+      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+        <Icon className="w-6 h-6 text-primary" strokeWidth={1.75} />
       </div>
-      <div>
-        <p className="font-medium text-secondary text-sm mb-1">{benefit.title}</p>
-        <p className="text-xs text-gray-600 leading-relaxed">{benefit.description}</p>
-      </div>
+      <p className="font-semibold text-secondary mb-2">{benefit.title}</p>
+      <p className="text-sm text-gray-600 leading-relaxed">{benefit.description}</p>
     </div>
   );
 };

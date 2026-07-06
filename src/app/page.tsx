@@ -11,7 +11,15 @@ import { getServices } from '@/sanity/data';
 import { BENEFITS } from '@/constants/benefits';
 import { STATS } from '@/constants/stats';
 import { COMPANY } from '@/constants/company';
-
+import { ShieldCheck, Wallet, Truck, FileCheck, Clock, Handshake, Award } from 'lucide-react';
+const BENEFIT_ICONS: Record<string, typeof Award> = {
+  'free-estimate': ShieldCheck,
+  'direct-contracts': Handshake,
+  'financing': Wallet,
+  'full-docs': FileCheck,
+  'own-fleet': Truck,
+  'experience': Award,
+};
 export default async function Home() {
   const services = await getServices();
 
@@ -20,7 +28,7 @@ export default async function Home() {
       <ServiceCarousel services={services} />
 
       {/* Возвращённая секция "О компании" */}
-      <section className="py-16">
+      <section className="py-20">
         <Container>
           <AboutSnippet />
         </Container>
@@ -33,24 +41,33 @@ export default async function Home() {
         </Container>
       </section>
 
-      <section className="py-16">
-        <Container>
-          <h2 className="text-2xl font-bold text-secondary mb-8">Почему выбирают нас</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {BENEFITS.map((benefit) => (
-              <BenefitCard key={benefit.id} benefit={benefit} />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-16 bg-gray-50">
+<section className="py-20">
+  <Container>
+    <div className="inline-block bg-primary text-white text-lg md:text-xl font-bold tracking-wide px-6 py-3 rounded mb-4">
+      6 ПРОСТЫХ ПРИЧИН
+    </div>
+    <h2 className="text-2xl md:text-3xl font-bold text-secondary mb-10">
+      Почему выбирают нас
+    </h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {BENEFITS.map((benefit, i) => (
+        <BenefitCard
+          key={benefit.id}
+          benefit={benefit}
+          Icon={BENEFIT_ICONS[benefit.id] ?? Award}
+          shaded={i % 2 === 1}
+        />
+      ))}
+    </div>
+  </Container>
+</section>
+      <section className="py-20 bg-gray-50">
         <Container>
           <MaterialsBanner />
         </Container>
       </section>
 
-      <section className="py-16 bg-secondary">
+      <section className="py-20 bg-secondary">
         <Container>
           <h2 className="text-2xl font-bold text-white mb-8">{COMPANY.name} в цифрах</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
