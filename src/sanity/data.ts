@@ -5,6 +5,8 @@ import {
   SERVICE_BY_SLUG_QUERY,
   PRODUCTS_QUERY,
   PRODUCT_BY_ID_QUERY,
+  PROJECTS_QUERY,
+  ABOUT_PAGE_QUERY,
 } from './queries';
 import type { SanityService, SanityProduct } from './types';
 
@@ -22,4 +24,11 @@ export async function getProducts(): Promise<SanityProduct[]> {
 
 export async function getProductById(id: string): Promise<SanityProduct | null> {
   return client.fetch(PRODUCT_BY_ID_QUERY, { id });
+}
+export async function getProjects() {
+  return client.fetch(PROJECTS_QUERY);
+}
+
+export async function getAboutPage() {
+  return client.fetch(ABOUT_PAGE_QUERY);
 }

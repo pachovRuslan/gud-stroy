@@ -11,6 +11,7 @@ import { getServices } from '@/sanity/data';
 import { BENEFITS } from '@/constants/benefits';
 import { STATS } from '@/constants/stats';
 import { COMPANY } from '@/constants/company';
+import { getProjects } from '@/sanity/data';
 import { ShieldCheck, Wallet, Truck, FileCheck, Clock, Handshake, Award } from 'lucide-react';
 const BENEFIT_ICONS: Record<string, typeof Award> = {
   'free-estimate': ShieldCheck,
@@ -22,7 +23,7 @@ const BENEFIT_ICONS: Record<string, typeof Award> = {
 };
 export default async function Home() {
   const services = await getServices();
-
+  const projects = await getProjects();
   return (
     <>
       <ServiceCarousel services={services} />
@@ -37,7 +38,7 @@ export default async function Home() {
       <section className="py-12 md:py-16 bg-gray-50">
         <Container>
           <h2 className="text-xl md:text-2xl font-bold text-secondary mb-8">Наши услуги</h2>
-          <ProjectsShowcase />
+          <ProjectsShowcase projects={projects} />
         </Container>
       </section>
 

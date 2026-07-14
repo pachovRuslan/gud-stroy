@@ -32,3 +32,13 @@ export type SanityProduct = {
   description: string | null;
   image: SanityImage | null;
 };
+export type SanityProject = {
+  _id: string;
+  image: SanityImage;
+  caption?: string;
+};
+
+export type SanityAboutPage = {
+  title?: string;
+  description: PortableTextBlock[];
+};

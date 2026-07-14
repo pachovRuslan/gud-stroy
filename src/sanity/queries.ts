@@ -46,3 +46,17 @@ export const PRODUCT_BY_ID_QUERY = groq`
     image
   }
 `;
+export const PROJECTS_QUERY = groq`
+  *[_type == "project"] | order(order asc) {
+    _id,
+    image,
+    caption
+  }
+`;
+
+export const ABOUT_PAGE_QUERY = groq`
+  *[_type == "aboutPage"][0] {
+    title,
+    description
+  }
+`;
