@@ -5,11 +5,20 @@ import { PortableText } from '@portabletext/react';
 import ContactForm from '@/components/ContactForm';
 import { getServices, getServiceBySlug } from '@/sanity/data';
 import { urlFor } from '@/sanity/image';
+import type { Metadata } from 'next';
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const service = await getServiceBySlug(slug);
 
+  return {
+    title: service?.title ? `${service.title} — ГУДСТРОЙ Витебск` : 'Услуга — ГУДСТРОЙ Витебск',
+    description: service?.shortDescription || 'Закажите строительные услуги в Витебске от компании ГУДСТРОЙ.',
+  };
+}
 export async function generateStaticParams() {
   const services = await getServices();
   return services.map((s) => ({ slug: s.slug }));

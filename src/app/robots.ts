@@ -1,10 +1,11 @@
-// src/app/robots.ts
 import type { MetadataRoute } from 'next';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gud-stroy.by';
+export const dynamic = 'force-static';
+
+const BASE_URL = 'https://гудстрой.бел';
 
 export default function robots(): MetadataRoute.Robots {
-  // Sanity Studio не индексируется; всё остальное разрешено.
+
   return {
     rules: [
       {

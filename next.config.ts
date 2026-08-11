@@ -1,15 +1,10 @@
-// next.config.ts
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'cdn.sanity.io',
-      },
-    ],
-  },
+    unoptimized: true, // <-- Добавьте эту строку
+  },// здесь могут быть другие ваши настройки
 };
 
-export default nextConfig;
+module.exports = nextConfig;

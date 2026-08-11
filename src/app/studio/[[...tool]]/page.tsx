@@ -1,9 +1,13 @@
-// src/app/studio/[[...tool]]/page.tsx
-'use client';
+import { Studio } from './Studio';
 
-import { NextStudio } from 'next-sanity/studio';
-import config from '../../../../sanity.config';
+// 1. Указываем статическую сборку
+export const dynamic = 'force-static';
+
+// 2. Генерируем маршрут для статического экспорта (БЕЗ 'use client' на этой странице!)
+export function generateStaticParams() {
+  return [{ tool: [] }];
+}
 
 export default function StudioPage() {
-  return <NextStudio config={config} />;
+  return <Studio />;
 }
