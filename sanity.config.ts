@@ -7,8 +7,8 @@ import { structure } from './src/sanity/structure';
 export default defineConfig({
   name: 'default',
   title: 'ГУД-СТРОЙ',
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "w0iooenl",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
   basePath: '/studio',
   plugins: [structureTool({ structure }), visionTool()],
   schema,
