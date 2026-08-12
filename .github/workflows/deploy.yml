@@ -3,7 +3,12 @@ name: Deploy Next.js to hoster.by
 on:
   push:
     branches:
-      - main # Срабатывает при пуше в ветку main (или master)
+      - main
+
+# Выносим переменные на верхний уровень:
+env:
+  NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+  NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
 
 jobs:
   web-deploy:
@@ -30,9 +35,6 @@ jobs:
 
       - name: 🏗️ Build static site
         run: pnpm build
-        env:
-          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
-          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
 
       - name: 📂 Sync files via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
