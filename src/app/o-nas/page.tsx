@@ -10,7 +10,7 @@ import { COMPANY } from '@/constants/company';
 
 export default async function AboutPage() {
   const [about, projects] = await Promise.all([getAboutPage(), getProjects()]);
-
+console.log('SANITY ABOUT DATA:', about);
   return (
     <>
       <AboutHero />
