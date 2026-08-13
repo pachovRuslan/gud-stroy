@@ -10,18 +10,22 @@ import { COMPANY } from '@/constants/company';
 
 export default async function AboutPage() {
   const [about, projects] = await Promise.all([getAboutPage(), getProjects()]);
-console.log('SANITY ABOUT DATA:', about);
+
   return (
     <>
       <AboutHero />
 
       <section className="py-16">
         <Container>
-          <h2 className="text-2xl font-bold text-secondary mb-6">
-            {about?.title || `О компании ${COMPANY.name}`}
-          </h2>
-          <div className="prose prose-sm max-w-2xl text-gray-700 mb-12">
-            {about?.description && <PortableText value={about.description} />}
+          {/* Ограничиваем ширину и центрируем или оставляем слева, но с комфортным max-w */}
+          <div className="max-w-3xl">
+            <h2 className="text-3xl font-bold text-secondary mb-8">
+              {about?.title || `О компании ${COMPANY.name}`}
+            </h2>
+            
+            <div className="prose prose-lg text-gray-700 leading-relaxed space-y-6 mb-12">
+              {about?.description && <PortableText value={about.description} />}
+            </div>
           </div>
 
           <PhotoCarousel projects={projects} heightClass="h-64 md:h-96" />
