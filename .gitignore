@@ -49,3 +49,6 @@ next-env.d.ts
 
 # Local Netlify folder
 .netlify
+
+# pnpm workspace config — авто-генерируется pnpm 10+, не коммитим (CI использует pnpm 9)
+pnpm-workspace.yaml
