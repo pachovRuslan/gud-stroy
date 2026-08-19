@@ -1,8 +1,11 @@
 import { createClient } from 'next-sanity';
+import { projectId, dataset, apiVersion } from './env';
 
 export const client = createClient({
-  projectId: "w0iooenl",
-  dataset: 'production',
-  apiVersion: '2025-01-01',
-  useCdn: false,
+  projectId,
+  dataset,
+  apiVersion,
+  // CDN включён обратно: для static export это бесплатно и быстрее.
+  // Раньше было false — это лишняя нагрузка на Sanity API.
+  useCdn: true,
 });

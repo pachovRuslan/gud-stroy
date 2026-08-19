@@ -33,6 +33,13 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# backups and archives — никогда не коммитим
+*.tar.gz
+*.tar
+*.zip
+backup/
+backups/
+
 # vercel
 .vercel
 
