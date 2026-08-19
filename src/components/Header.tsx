@@ -68,7 +68,7 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-5">
-            <span>{COMPANY.hours ?? 'Пн–Сб, 9:00–19:00'}</span>
+            <span>{COMPANY.workHours ?? 'Пн–Сб, 9:00–19:00'}</span>
             <span className="w-px h-3.5 bg-white/20" />
             <a
               href={`tel:${COMPANY.phone.replace(/\s|\(|\)|-/g, '')}`}
