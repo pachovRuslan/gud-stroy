@@ -86,26 +86,30 @@ export default async function Home() {
         </Container>
       </section>
 
-      <section className="py-20">
+            <section className="py-16 md:py-24">
         <Container>
-          <div className="inline-block bg-primary text-white text-lg md:text-xl font-bold tracking-wide px-6 py-3 rounded mb-4">
-            6 ПРОСТЫХ ПРИЧИН
+          <div className="max-w-2xl mb-12 md:mb-14">
+            <span className="inline-flex items-center gap-2 text-primary font-semibold text-xs uppercase tracking-wider mb-3">
+              <span className="w-1 h-3.5 bg-primary rounded-full" />
+              6 простых причин
+            </span>
+            <h2 className="text-2xl md:text-3xl font-bold text-secondary mb-8">
+              Почему выбирают нас
+            </h2>
           </div>
-          <h2 className="text-2xl md:text-4xl font-bold text-secondary mb-10">
-            Почему выбирают нас
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {BENEFITS.map((benefit, i) => (
               <BenefitCard
                 key={benefit.id}
                 benefit={benefit}
                 Icon={BENEFIT_ICONS[benefit.id] ?? Award}
-                shaded={i % 2 === 1}
+                index={i}
               />
             ))}
           </div>
         </Container>
       </section>
+
       <CreditBanner />
       <section className="py-20 bg-gray-50">
         <Container>

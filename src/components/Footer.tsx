@@ -33,7 +33,27 @@ const Footer = async () => {
 
   return (
     <footer className="bg-secondary text-gray-300">
-      <Container className="py-12">
+      {/* Верхняя CTA-полоса — та же пилюля-кнопка и акцент, что и в хэдере */}
+      <div className="border-b border-white/10">
+        <Container className="py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <span className="text-primary font-semibold text-xs uppercase tracking-wider">
+              Готовы обсудить проект?
+            </span>
+            <h3 className="text-white text-2xl md:text-3xl font-extrabold mt-2 tracking-tight">
+              Рассчитаем стоимость за 1 день
+            </h3>
+          </div>
+          <Link
+            href="/#zayavka"
+            className="px-7 py-3.5 bg-primary text-white font-semibold rounded-full hover:bg-primary-dark hover:-translate-y-0.5 transition-all whitespace-nowrap shadow-sm shadow-primary/30 flex-shrink-0"
+          >
+            Заказать расчет
+          </Link>
+        </Container>
+      </div>
+
+      <Container className="py-14">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Колонка 1: Логотип и краткое описание */}
           <div className="md:col-span-1">
@@ -41,8 +61,8 @@ const Footer = async () => {
               <Image
                 src="/images/logo.png"
                 alt={COMPANY.name}
-                width={48}
-                height={48}
+                width={44}
+                height={44}
                 className="rounded-md"
               />
               <span className="text-lg font-bold text-white tracking-tight">
@@ -52,19 +72,38 @@ const Footer = async () => {
             <p className="text-sm leading-relaxed text-gray-400">
               {COMPANY.tagline}. Работаем с {COMPANY.experience} опыта.
             </p>
+
+            {/* Соцсети — монохромные, брендовый цвет только на hover, как в хэдере */}
+            <div className="flex items-center gap-2 mt-6">
+              {SOCIALS.map(({ key, href, label, Icon, color }) => (
+                <a
+                  key={key}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  title={label}
+                  style={{ '--brand': color } as React.CSSProperties}
+                  className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-[var(--brand)] hover:border-transparent hover:text-white transition-colors"
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Колонка 2: Навигация */}
           <div>
-            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+            <h3 className="text-white font-semibold mb-5 text-xs uppercase tracking-wider relative pl-3">
+              <span className="absolute left-0 top-1 w-1 h-3.5 bg-primary rounded-full" />
               Навигация
             </h3>
-            <ul className="flex flex-col gap-2.5 text-sm">
+            <ul className="flex flex-col gap-3 text-sm">
               {FOOTER_NAV.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="hover:text-white transition-colors"
+                    className="hover:text-white hover:pl-1 transition-all"
                   >
                     {item.label}
                   </Link>
@@ -75,16 +114,17 @@ const Footer = async () => {
 
           {/* Колонка 3: Услуги (из Sanity) */}
           <div>
-            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+            <h3 className="text-white font-semibold mb-5 text-xs uppercase tracking-wider relative pl-3">
+              <span className="absolute left-0 top-1 w-1 h-3.5 bg-primary rounded-full" />
               Услуги
             </h3>
             {footerServices.length > 0 ? (
-              <ul className="flex flex-col gap-2.5 text-sm">
+              <ul className="flex flex-col gap-3 text-sm">
                 {footerServices.map((service) => (
                   <li key={service._id}>
                     <Link
                       href={`/uslugi/${service.slug}`}
-                      className="hover:text-white transition-colors"
+                      className="hover:text-white hover:pl-1 transition-all"
                     >
                       {service.title}
                     </Link>
@@ -92,9 +132,9 @@ const Footer = async () => {
                 ))}
               </ul>
             ) : (
-              <ul className="flex flex-col gap-2.5 text-sm">
+              <ul className="flex flex-col gap-3 text-sm">
                 <li>
-                  <Link href="/uslugi" className="hover:text-white transition-colors">
+                  <Link href="/uslugi" className="hover:text-white hover:pl-1 transition-all">
                     Все услуги
                   </Link>
                 </li>
@@ -102,16 +142,17 @@ const Footer = async () => {
             )}
           </div>
 
-          {/* Колонка 4: Контакты и соцсети */}
+          {/* Колонка 4: Контакты */}
           <div>
-            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+            <h3 className="text-white font-semibold mb-5 text-xs uppercase tracking-wider relative pl-3">
+              <span className="absolute left-0 top-1 w-1 h-3.5 bg-primary rounded-full" />
               Контакты
             </h3>
-            <ul className="flex flex-col gap-2.5 text-sm mb-6">
+            <ul className="flex flex-col gap-3 text-sm">
               <li>
                 <a
                   href={`tel:${COMPANY.phone.replace(/\s|\(|\)|-/g, '')}`}
-                  className="hover:text-white transition-colors"
+                  className="text-white font-medium hover:text-primary transition-colors"
                 >
                   {COMPANY.phone}
                 </a>
@@ -127,29 +168,11 @@ const Footer = async () => {
               <li className="text-gray-400">{COMPANY.region}</li>
               <li className="text-gray-400">{COMPANY.workHours}</li>
             </ul>
-
-            {/* Соцсети — как на siphaus.by, только круглые кнопки */}
-            <div className="flex items-center gap-3">
-              {SOCIALS.map(({ key, href, label, Icon, color }) => (
-                <a
-                  key={key}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  title={label}
-                  className="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center hover:border-white transition-colors"
-                  style={{ color }}
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
-            </div>
           </div>
         </div>
 
         {/* Нижняя строка — копирайт */}
-        <div className="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 text-xs text-gray-500">
+        <div className="border-t border-white/10 mt-12 pt-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 text-xs text-gray-500">
           <p>
             © {new Date().getFullYear()} {COMPANY.name}. Все права защищены.
           </p>
