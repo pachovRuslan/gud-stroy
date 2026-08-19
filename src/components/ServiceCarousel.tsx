@@ -40,10 +40,10 @@ const ServiceCarousel = ({ services }: Props) => {
 
   return (
     <div
-      className="relative overflow-hidden h-[340px] md:h-[400px] bg-cover bg-center"
+      className="relative overflow-hidden h-[520px] md:h-[680px] bg-cover bg-center"
       style={{ backgroundImage: "url('/images/1.jpg')" }}
     >
-      <div className="absolute inset-0 bg-secondary/85" />
+      <div className="absolute inset-0 bg-secondary/80" />
 
       {services.map((service, i) => (
         <div
@@ -52,30 +52,30 @@ const ServiceCarousel = ({ services }: Props) => {
             activeSlide === i ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
-          <Container className="relative w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <Container className="relative w-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
-              <p className="text-primary text-sm font-medium tracking-wide mb-2">
+              <p className="text-primary text-base md:text-lg font-medium tracking-wide mb-3">
                 Услуга {i + 1} из {totalSlides}
               </p>
-              <h2 className="text-xl md:text-2xl font-bold text-white mb-2">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
                 {service.title}
               </h2>
               {service.shortDescription && (
-                <p className="text-gray-300 leading-relaxed mb-4 max-w-md text-sm md:text-base line-clamp-4">
+                <p className="text-gray-200 leading-relaxed mb-6 max-w-xl text-base md:text-lg line-clamp-4">
                   {service.shortDescription}
                 </p>
               )}
               <Link
                 href={`/uslugi/${service.slug}`}
-                className="inline-block px-6 py-2.5 bg-primary text-white font-semibold rounded hover:bg-primary-dark transition-all"
+                className="inline-block px-8 py-3 bg-primary text-white text-base md:text-lg font-semibold rounded hover:bg-primary-dark transition-all"
               >
                 Подробнее
               </Link>
             </div>
             {service.image && (
-              <div className="relative w-full h-48 md:h-64 rounded-lg overflow-hidden shadow-lg">
+              <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-2xl">
                 <Image
-                  src={urlFor(service.image).width(800).height(600).url()}
+                  src={urlFor(service.image).width(1200).height(900).url()}
                   alt={service.title}
                   fill
                   className="object-cover"
@@ -91,26 +91,26 @@ const ServiceCarousel = ({ services }: Props) => {
           <button
             onClick={goPrev}
             aria-label="Предыдущая услуга"
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors z-10"
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/25 text-white text-xl flex items-center justify-center transition-colors z-10"
           >
             ‹
           </button>
           <button
             onClick={goNext}
             aria-label="Следующая услуга"
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors z-10"
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/25 text-white text-xl flex items-center justify-center transition-colors z-10"
           >
             ›
           </button>
 
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-10">
             {services.map((service, i) => (
               <button
                 key={service._id}
                 onClick={() => goToSlide(i)}
                 aria-label={`Услуга: ${service.title}`}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  activeSlide === i ? 'bg-primary' : 'bg-white/30'
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  activeSlide === i ? 'bg-primary' : 'bg-white/40'
                 }`}
               />
             ))}

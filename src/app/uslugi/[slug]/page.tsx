@@ -10,6 +10,16 @@ import type { Metadata } from 'next';
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+ 
+export async function generateStaticParams() {
+  const services = await getServices();
+  return services.map((s) => ({ slug: s.slug }));
+}
+
+ 
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = await getServiceBySlug(slug);
@@ -18,10 +28,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: service?.title ? `${service.title} — ГУДСТРОЙ Витебск` : 'Услуга — ГУДСТРОЙ Витебск',
     description: service?.shortDescription || 'Закажите строительные услуги в Витебске от компании ГУДСТРОЙ.',
   };
-}
-export async function generateStaticParams() {
-  const services = await getServices();
-  return services.map((s) => ({ slug: s.slug }));
 }
 
 export default async function ServiceDetailPage({ params }: Props) {

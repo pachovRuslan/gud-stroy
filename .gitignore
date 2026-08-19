@@ -49,5 +49,3 @@ next-env.d.ts
 
 # Local Netlify folder
 .netlify
-
-pnpm-workspace.yaml

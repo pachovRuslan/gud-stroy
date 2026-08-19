@@ -6,7 +6,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import Container from './Container';
-import { COMPANY } from '@/constants/company';
+import { COMPANY, SOCIAL_LINKS } from '@/constants/company';
+import { ViberIcon, WhatsAppIcon, TelegramIcon, MaxIcon, InstagramIcon } from './SocialIcons';
 
 // CTA-кнопка ведёт на форму заявки: на главной — к якорю #zayavka,
 // на остальных страницах — на главную с тем же якорем.
@@ -25,9 +26,18 @@ const NAV_ITEMS = [
   { href: '/uslugi', label: 'Услуги' },
   { href: '/tovary', label: 'Товары' },
   { href: '/kontakty', label: 'Контакты' },
-  
-  
 ];
+
+// Мессенджеры и соцсети для шапки (только десктоп).
+// Используем собственные SVG-иконки для брендов, так как lucide-react v1.x
+// убрал все brand-иконки.
+const MESSENGERS = [
+  { key: 'viber',     href: SOCIAL_LINKS.viber,     label: 'Viber',     Icon: ViberIcon,     color: '#7360F2' },
+  { key: 'whatsapp',  href: SOCIAL_LINKS.whatsapp,  label: 'WhatsApp',  Icon: WhatsAppIcon,  color: '#25D366' },
+  { key: 'telegram',  href: SOCIAL_LINKS.telegram,  label: 'Telegram',  Icon: TelegramIcon,  color: '#0088CC' },
+  { key: 'max',       href: SOCIAL_LINKS.max,       label: 'MAX',       Icon: MaxIcon,       color: '#FF6B35' },
+  { key: 'instagram', href: SOCIAL_LINKS.instagram, label: 'Instagram', Icon: InstagramIcon, color: '#E1306C' },
+] as const;
 
 const Header = () => {
   const pathname = usePathname();
@@ -70,10 +80,29 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-5">
-          
-            <a href={`tel:${COMPANY.phone.replace(/\s|\(|\)|-/g, '')}`}
-            className="text-sm font-medium text-secondary hover:text-primary transition-colors whitespace-nowrap">
+        <div className="hidden md:flex items-center gap-4">
+          {/* Мессенджеры и соцсети — компактные иконки возле телефона */}
+          <div className="flex items-center gap-1.5">
+            {MESSENGERS.map(({ key, href, label, Icon, color }) => (
+              <a
+                key={key}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                title={label}
+                className="w-8 h-8 rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+                style={{ color }}
+              >
+                <Icon className="w-4 h-4" />
+              </a>
+            ))}
+          </div>
+
+          <a
+            href={`tel:${COMPANY.phone.replace(/\s|\(|\)|-/g, '')}`}
+            className="text-sm font-medium text-secondary hover:text-primary transition-colors whitespace-nowrap"
+          >
             {COMPANY.phone}
           </a>
           <CtaButton className="px-6 py-2 bg-primary text-white font-semibold rounded hover:bg-primary-dark transition-all whitespace-nowrap">
@@ -109,8 +138,26 @@ const Header = () => {
                 {item.label}
               </Link>
             ))}
-            
-             <a href={`tel:${COMPANY.phone.replace(/\s|\(|\)|-/g, '')}`}
+
+            {/* Мессенджеры в мобильном меню — крупнее, в строку */}
+            <div className="flex items-center gap-3 py-3">
+              {MESSENGERS.map(({ key, href, label, Icon, color }) => (
+                <a
+                  key={key}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  title={label}
+                  className="w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+                  style={{ color }}
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
+
+            <a href={`tel:${COMPANY.phone.replace(/\s|\(|\)|-/g, '')}`}
               className="py-3 font-medium text-secondary"
             >
               {COMPANY.phone}
