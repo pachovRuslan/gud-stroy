@@ -11,16 +11,13 @@ import type { SanityProduct } from '@/sanity/types';
 type Props = {
   params: Promise<{ id: string }>;
 };
-
-// Пререндериваем только те товары, что реально есть в Sanity.
+ 
 export async function generateStaticParams() {
   const products = await getProducts();
   return products.map((p) => ({ id: p._id }));
 }
 
-// Запрещаем генерацию страниц для id, которых нет в Sanity.
-// В сочетании с output: 'export' это гарантирует, что сборка не упадёт
-// на неизвестных путях — они просто вернут 404.
+ 
 export const dynamicParams = false;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

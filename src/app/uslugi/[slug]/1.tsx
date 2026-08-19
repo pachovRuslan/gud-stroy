@@ -11,21 +11,13 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
-// Обязательно для output: 'export'. Next.js 16 имеет баг: если вернуть []
-// (пустой массив), он падает с "missing generateStaticParams()".
-// Поэтому если в Sanity нет услуг — возвращаем заглушку, которая приведёт
-// к 404 (dynamicParams = false).
+ 
 export async function generateStaticParams() {
   const services = await getServices();
-  if (services.length === 0) {
-    // Заглушка — страница будет сгенерирована, но dynamicParams = false
-    // приведёт к 404 при попытке рендера.
-    return [{ slug: '_placeholder' }];
-  }
   return services.map((s) => ({ slug: s.slug }));
 }
 
-// Запрещаем генерацию страниц для slug'ов, которых нет в Sanity.
+ 
 export const dynamicParams = false;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

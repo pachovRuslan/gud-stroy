@@ -12,12 +12,18 @@ type Props = {
   params: Promise<{ id: string }>;
 };
  
+// Обязательно для output: 'export'. Next.js 16 имеет баг: если вернуть []
+// (пустой массив), он падает с "missing generateStaticParams()".
+// Поэтому если в Sanity нет товаров — возвращаем заглушку.
 export async function generateStaticParams() {
   const products = await getProducts();
+  if (products.length === 0) {
+    return [{ id: '_placeholder' }];
+  }
   return products.map((p) => ({ id: p._id }));
 }
 
- 
+// Запрещаем генерацию страниц для id, которых нет в Sanity.
 export const dynamicParams = false;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
