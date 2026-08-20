@@ -16,6 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/o-nas/`, changeFrequency: 'yearly', priority: 0.6 },
     { url: `${BASE_URL}/uslugi/`, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE_URL}/tovary/`, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE_URL}/kredity/`, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE_URL}/kontakty/`, changeFrequency: 'yearly', priority: 0.5 },
   ];
 

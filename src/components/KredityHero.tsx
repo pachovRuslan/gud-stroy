@@ -1,17 +1,17 @@
-// src/components/UslugiHero.tsx
+// src/components/KreditovanieHero.tsx
 import Link from 'next/link';
-import { Award, ShieldCheck, Users, Truck, Wallet } from 'lucide-react';
+import { ShieldCheck, Zap, UserCheck, FileSignature, Landmark } from 'lucide-react';
 import Container from './Container';
 
 const BADGES = [
-  { label: 'Опыт работы', icon: Award },
-  { label: 'Качество', icon: ShieldCheck },
-  { label: 'Профессионализм', icon: Users },
-  { label: 'Собственный автопарк', icon: Truck },
-  { label: 'Доступные цены', icon: Wallet },
+  { label: 'Рассмотрение за 1 день', icon: Zap },
+  { label: 'Индивидуальный подбор', icon: UserCheck },
+  { label: 'Без скрытых комиссий', icon: ShieldCheck },
+  { label: 'Помощь с документами', icon: FileSignature },
+  { label: 'Работаем с банками РБ', icon: Landmark },
 ];
 
-const UslugiHero = () => {
+const KreditovanieHero = () => {
   return (
     <section className="pt-4 md:pt-6 pb-10 md:pb-16">
       <Container>
@@ -19,7 +19,7 @@ const UslugiHero = () => {
           {/* Фото-часть — только breadcrumb и заголовок, ничего мелкого поверх изображения */}
           <div
             className="relative bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/3.jpg')" }}
+            style={{ backgroundImage: "url('/images/5.jpg')" }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-secondary/80 via-secondary/85 to-secondary/95" />
 
@@ -29,11 +29,11 @@ const UslugiHero = () => {
                 <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 text-gray-500">
                   <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span className="text-white">Услуги</span>
+                <span className="text-white">Кредитование</span>
               </div>
 
               <h1 className="text-3xl md:text-4xl font-extrabold text-white max-w-2xl leading-tight tracking-tight">
-                Полный комплекс услуг, от фундамента до результата
+                Стройте дом сейчас — платите потом
               </h1>
             </div>
           </div>
@@ -62,4 +62,4 @@ const UslugiHero = () => {
   );
 };
 
-export default UslugiHero;
+export default KreditovanieHero;

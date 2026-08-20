@@ -25,6 +25,7 @@ const NAV_ITEMS = [
   { href: '/o-nas', label: 'О нас' },
   { href: '/uslugi', label: 'Услуги' },
   { href: '/tovary', label: 'Товары' },
+  { href: '/kredity', label: 'Кредиты' },
   { href: '/kontakty', label: 'Контакты' },
 ];
 

@@ -80,62 +80,106 @@ const ContactForm = () => {
 
   if (status === 'success') {
     return (
-      <div className="bg-white rounded-lg border border-gray-200 p-6 text-center">
-        <p className="font-semibold text-secondary mb-1">Заявка отправлена</p>
-        <p className="text-sm text-gray-600">Мы перезвоним вам в течение 24 часов.</p>
+      <div className="bg-white rounded-[24px] border border-gray-100 shadow-sm p-8 text-center">
+        <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+          <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-primary">
+            <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        <p className="font-bold text-secondary mb-1.5">Заявка отправлена</p>
+        <p className="text-sm text-gray-500">Мы перезвоним вам в течение 24 часов.</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-lg border border-gray-200 p-6 flex flex-col gap-4">
+    <form onSubmit={handleSubmit} className="bg-white rounded-[24px] border border-gray-100 shadow-sm p-7 flex flex-col gap-4">
       <div>
-        <input
-          type="text"
-          placeholder="Ваше имя"
-          value={formData.name}
-          onChange={handleChange('name')}
-          className={`w-full h-11 px-3 rounded border text-sm ${
-            errors.name ? 'border-red-400' : 'border-gray-300'
-          }`}
-        />
-        {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
+        <div className="relative">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+            <svg viewBox="0 0 24 24" fill="none" className="w-[18px] h-[18px]">
+              <path d="M20 21a8 8 0 1 0-16 0" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+              <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.7" />
+            </svg>
+          </span>
+          <input
+            type="text"
+            placeholder="Ваше имя"
+            value={formData.name}
+            onChange={handleChange('name')}
+            className={`w-full h-12 pl-11 pr-4 rounded-xl border text-sm bg-gray-50/50 outline-none transition-colors focus:bg-white focus:ring-2 ${
+              errors.name
+                ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
+                : 'border-gray-200 focus:border-primary focus:ring-primary/10'
+            }`}
+          />
+        </div>
+        {errors.name && <p className="text-xs text-red-500 mt-1.5 ml-1">{errors.name}</p>}
       </div>
 
       <div>
-        <input
-          type="tel"
-          placeholder="+375 (29) 123-45-67"
-          value={formData.phone}
-          onChange={handleChange('phone')}
-          className={`w-full h-11 px-3 rounded border text-sm ${
-            errors.phone ? 'border-red-400' : 'border-gray-300'
-          }`}
-        />
-        {errors.phone && <p className="text-xs text-red-500 mt-1">{errors.phone}</p>}
+        <div className="relative">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+            <svg viewBox="0 0 24 24" fill="none" className="w-[18px] h-[18px]">
+              <path d="M6.6 10.8a15.4 15.4 0 0 0 6.6 6.6l2.2-2.2a1.2 1.2 0 0 1 1.2-.3c1.2.4 2.5.6 3.9.6a1.2 1.2 0 0 1 1.2 1.2V20a1.2 1.2 0 0 1-1.2 1.2C10.9 21.2 2.8 13.1 2.8 3.5A1.2 1.2 0 0 1 4 2.3h3.3a1.2 1.2 0 0 1 1.2 1.2c0 1.4.2 2.7.6 3.9a1.2 1.2 0 0 1-.3 1.2L6.6 10.8Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+            </svg>
+          </span>
+          <input
+            type="tel"
+            placeholder="+375 (29) 123-45-67"
+            value={formData.phone}
+            onChange={handleChange('phone')}
+            className={`w-full h-12 pl-11 pr-4 rounded-xl border text-sm bg-gray-50/50 outline-none transition-colors focus:bg-white focus:ring-2 ${
+              errors.phone
+                ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
+                : 'border-gray-200 focus:border-primary focus:ring-primary/10'
+            }`}
+          />
+        </div>
+        {errors.phone && <p className="text-xs text-red-500 mt-1.5 ml-1">{errors.phone}</p>}
       </div>
 
       <div>
-        <select
-          value={formData.service}
-          onChange={handleChange('service')}
-          className={`w-full h-11 px-3 rounded border text-sm bg-white ${
-            errors.service ? 'border-red-400' : 'border-gray-300'
-          }`}
-        >
-          {SERVICE_OPTIONS.map((opt) => (
-            <option key={opt.value} value={opt.value}>{opt.label}</option>
-          ))}
-        </select>
-        {errors.service && <p className="text-xs text-red-500 mt-1">{errors.service}</p>}
+        <div className="relative">
+          <select
+            value={formData.service}
+            onChange={handleChange('service')}
+            className={`w-full h-12 pl-4 pr-10 rounded-xl border text-sm bg-gray-50/50 outline-none appearance-none transition-colors focus:bg-white focus:ring-2 ${
+              formData.service ? 'text-secondary' : 'text-gray-400'
+            } ${
+              errors.service
+                ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
+                : 'border-gray-200 focus:border-primary focus:ring-primary/10'
+            }`}
+          >
+            {SERVICE_OPTIONS.map((opt) => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
+          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+            <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+        </div>
+        {errors.service && <p className="text-xs text-red-500 mt-1.5 ml-1">{errors.service}</p>}
       </div>
 
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="h-11 bg-primary text-white font-semibold rounded hover:bg-primary-dark transition-all disabled:opacity-60"
+        className="h-12 mt-1 bg-primary text-white font-semibold text-sm rounded-full hover:bg-primary-dark hover:-translate-y-0.5 transition-all disabled:opacity-60 disabled:hover:translate-y-0 shadow-sm shadow-primary/30 flex items-center justify-center gap-2"
       >
-        {status === 'submitting' ? 'Отправка...' : 'Отправить заявку'}
+        {status === 'submitting' ? (
+          'Отправка...'
+        ) : (
+          <>
+            Отправить заявку
+            <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </>
+        )}
       </button>
 
       {status === 'error' && (

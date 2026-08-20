@@ -5,41 +5,22 @@ import type { Benefit } from '@/constants/benefits';
 type Props = {
   benefit: Benefit;
   Icon: LucideIcon;
-  shaded?: boolean;
-  // Опциональный порядковый номер карточки (0-based).
-  // Если передан — в углу карточки показывается номер (01, 02, 03...).
-  index?: number;
+  index: number;
 };
 
-const BenefitCard = ({ benefit, Icon, shaded = false, index }: Props) => {
-  // Форматируем номер как "01", "02", "03" и т.д.
-  const displayNumber =
-    typeof index === 'number' ? String(index + 1).padStart(2, '0') : null;
-
+const BenefitCard = ({ benefit, Icon, index }: Props) => {
   return (
-    <div
-      className={`relative rounded-lg border border-gray-200 p-7 hover:shadow-md transition-shadow overflow-hidden ${
-        shaded ? 'bg-gray-100' : 'bg-white'
-      }`}
-    >
-      {/* Номер в правом верхнем углу — крупный, полупрозрачный */}
-      {displayNumber && (
-        <span className="absolute top-4 right-5 text-5xl md:text-6xl font-bold text-gray-100 select-none leading-none pointer-events-none">
-          {displayNumber}
-        </span>
-      )}
+    <div className="group relative rounded-[20px] border border-gray-100 bg-white p-7 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+      {/* Крупный приглушённый номер в углу — «6 причин» это реальный список, нумерация оправдана */}
+      <span className="absolute top-4 right-5 text-4xl font-extrabold text-primary/[0.08] group-hover:text-primary/[0.14] transition-colors leading-none select-none">
+        {String(index + 1).padStart(2, '0')}
+      </span>
 
-      <div className="relative">
-        <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
-          <Icon className="w-7 h-7 text-primary" strokeWidth={1.75} />
-        </div>
-        <p className="text-lg md:text-xl font-semibold text-secondary mb-3 leading-snug">
-          {benefit.title}
-        </p>
-        <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-          {benefit.description}
-        </p>
+      <div className="relative w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary group-hover:scale-105 transition-all duration-300">
+        <Icon className="w-7 h-7 text-primary group-hover:text-white transition-colors" strokeWidth={1.75} />
       </div>
+      <p className="relative text-lg md:text-xl font-bold text-secondary mb-3 leading-snug">{benefit.title}</p>
+      <p className="relative text-sm md:text-base text-gray-600 leading-relaxed">{benefit.description}</p>
     </div>
   );
 };

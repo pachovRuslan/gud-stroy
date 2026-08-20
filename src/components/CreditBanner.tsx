@@ -89,7 +89,7 @@ const CreditBanner = () => {
             <div className="flex flex-col sm:flex-row gap-3">
               {/* TODO: когда будет готова страница /kreditovanie — заменить href */}
               <Link
-                href="/kreditovanie"
+                href="/kredity"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-primary text-white text-base font-semibold rounded-full hover:bg-primary-dark hover:-translate-y-0.5 transition-all shadow-sm shadow-primary/40"
               >
                 Подробнее о кредитовании
